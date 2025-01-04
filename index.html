@@ -1,63 +1,364 @@
 <!DOCTYPE html>
-<html lang="en" class="squarespace-damask js-focus-visible yui3-js-enabled js flexbox canvas canvastext webgl no-touch hashchange history draganddrop rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions video audio svg inlinesvg svgclippaths browser-safari sqs-jacquard">
-
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
-  <meta name="apple-touch-fullscreen" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="preload" as="style" href="./styles/squarespace-clarkson-v2.css">
-  <link rel="stylesheet" type="text/css" href="./styles/squarespace-clarkson-v2.css">
-  <title>Meher Anklesaria</title>
-  <!-- Preserved necessary scripts -->
-  <script>
-    window.__RELEASE_VERSION__ = '566b08fbcd8d35ad4bd1a9d7ddca8c677dd92858';
-  </script>
-  <script src="./styles/legacy.js.download" nomodule="" type="text/javascript" crossorigin="anonymous"></script>
-  <script src="./styles/modern.js.download" type="text/javascript" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophisticated Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            color: #1a1a1a;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #1a1a1a;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            background-color: #fafafa;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 8rem 0;
+            background-color: #fff;
+        }
+
+        .section-title {
+            text-align: left;
+            margin-bottom: 4rem;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #fafafa;
+            padding: 8rem 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: #fff;
+            font-size: 1rem;
+            color: #1a1a1a;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        button {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        button:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 4rem 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Elegant Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title, .hero-content, .project-card {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
-<body class="squarespace-config squarespace-editable sqs-frame-loaded section-settings" style="margin: 0; padding: 0; overflow: hidden;">
-  <div class="sqs-damask sqs-damask-banner-visible" data-test="appshell-container">
-    <div class="css-penutl">
-      <div class="ipb1fdN9gLaXZD9jYsSs">
-        <div class="App" data-test="websiteType_1">
-          <div class="App-container css-152uv2x" style="width: 100vw; height: 100vh; margin: 0; padding: 0;">
-            <div class="App-siteFrame" data-test="App-site-frame">
-              <div class="config-website-frame ZMOp8nbskqra9ULXxkMV" style="width: 100%; left: 0; margin: 0; padding: 0; position: absolute; top: 0; right: 0; bottom: 0;">
-                <div style="visibility: visible; height: 100%;">
-                  <!-- Preserved toolbar -->
-                  <div id="frame-toolbar-desktop" role="toolbar" class="R4Sx9NxmboorhnzRy5O_ undefined">
-                    <!-- Toolbar content preserved -->
-                  </div>
-                  <div class="css-ahju80">
-                    <div transform="translateX(0px)" class="css-1mkzh8i"></div>
-                  </div>
-                  <div class="mB77FzP2qYDgCPdLhXIJ zJc6DR8pNGt2_ksGBZKE js-device-view-frame">
-                    <div class="us06aCNT2FBtq9QpN_5u fIwCkxpkxrwqjbHL0Z2B KJ_ENHPj1tv_TVKBHfEy s95btergvYT1E6erBHzA">
-                      <div class="preview-viewport" style="width: 100vw; height: 100vh;">
-                        <iframe data-guidance-engine="guidance-engine-site-frame" data-testid="sqs-site-frame" id="sqs-site-frame" title="Meher Anklesaria" frameborder="0" allowfullscreen="" style="width: 100%; height: 100%; border: none;" src="./styles/saved_resource(1).html"></iframe>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </nav>
+    </header>
 
-  <!-- Preserved necessary scripts at bottom -->
-  <script type="text/javascript">
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start': new Date().getTime(), event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-BCCP');
-  </script>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Creating Digital Experiences</h1>
+                <p>A portfolio of carefully crafted works in design and development, focused on creating meaningful and elegant solutions.</p>
+                <button>View Portfolio</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Selected Works</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Modern Architecture</h3>
+                        <p>An exploration of clean lines and minimalist design principles in digital spaces.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Digital Innovation</h3>
+                        <p>Pushing boundaries through innovative technology and thoughtful design.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Project 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>Brand Evolution</h3>
+                        <p>Crafting cohesive brand experiences across digital platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
